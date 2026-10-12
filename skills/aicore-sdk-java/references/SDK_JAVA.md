@@ -99,7 +99,7 @@ System.out.println(response.getContent());
 | `MISTRAL_MEDIUM`, `MISTRAL_SMALL`  | Mistral AI                  |
 | `SONAR`                            | Perplexity Sonar (with citations) |
 
-Use `genai-hub-foundation-models` skill to list all models available in your instance.
+Use the [SAP GenAI Hub documentation](https://help.sap.com/docs/sap-ai-core) or the SAP AI Core console to list all models available in your instance.
 
 ## Model Parameters
 
@@ -644,9 +644,9 @@ var configWithMasking = config.withMaskingConfig(maskingConfig);
 
 | Error | Cause | Fix |
 | --- | --- | --- |
-| `401 Unauthorized` | `AICORE_SERVICE_KEY` is wrong, expired, or belongs to the wrong instance | Verify the service key JSON is complete and current; invoke `aicore-admin-resources` to re-check credentials |
-| `404 Not Found` | No deployment exists for the requested model in the target resource group | Invoke `aicore-lifecycle-management` to list or create the required deployment |
-| `No credentials found` | `AICORE_SERVICE_KEY` environment variable is not set (local dev) or `VCAP_SERVICES` is absent (BTP) | Set `export AICORE_SERVICE_KEY='...'` locally, or invoke `aicore-admin-resources` to configure credentials |
+| `401 Unauthorized` | `AICORE_SERVICE_KEY` is wrong, expired, or belongs to the wrong instance | Verify the service key JSON is complete and current; see [Connecting to AI Core](https://sap.github.io/ai-sdk/docs/java/connecting-to-ai-core) |
+| `404 Not Found` | No deployment exists for the requested model in the target resource group | Use the SAP AI Core console or contact your admin to list or create the required deployment |
+| `No credentials found` | `AICORE_SERVICE_KEY` environment variable is not set (local dev) or `VCAP_SERVICES` is absent (BTP) | Set `export AICORE_SERVICE_KEY='...'` locally; see [Connecting to AI Core](https://sap.github.io/ai-sdk/docs/java/connecting-to-ai-core) |
 | `OrchestrationFilterException.Input` | The input prompt was blocked by the configured content filter (e.g. `AzureContentFilter`, `LlamaGuardFilter`) | Revise the prompt to comply with the filter policy, or adjust filter thresholds via `withInputFiltering()` |
 | `OrchestrationFilterException.Output` | The model response was blocked by the configured output content filter | Adjust the output filter thresholds via `withOutputFiltering()`, or refine the prompt to steer the model away from blocked content |
 | `OrchestrationClientException` | General API or connectivity error (network issue, malformed request, service outage) | Call `e.getHttpResponse()` / `e.getErrorResponse()` to inspect the HTTP status and error body; check AI Core service availability |

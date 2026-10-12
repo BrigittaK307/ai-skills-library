@@ -564,8 +564,7 @@ See `assets/context_registry.ts` for the full lifecycle example with polling.
 `@sap-ai-sdk/ai-api` exposes deployment/scenario/configuration management (`DeploymentApi`,
 `ScenarioApi`, `FileApi`, …). This JS skill uses it only for **read/support** operations (e.g.
 `FileApi` for batch I/O, or `DeploymentApi.deploymentQuery` to list deployments). For
-**creating, stopping, or deleting** deployments and configurations, hand off to
-`aicore-lifecycle-management` rather than emitting lifecycle-mutating JS here.
+**creating, stopping, or deleting** deployments and configurations, use the SAP AI Core console or contact your admin rather than emitting lifecycle-mutating JS here.
 
 ```typescript
 import { DeploymentApi } from "@sap-ai-sdk/ai-api";

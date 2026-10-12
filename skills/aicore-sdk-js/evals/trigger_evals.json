@@ -80,54 +80,14 @@
     },
 
     {
-      "query": "Write the SAP orchestration chat code in Python",
+      "query": "Give me Java code to chat with a GenAI Hub model",
       "should_trigger": false,
-      "belongs_to": "aicore-sdk-python"
+      "belongs_to": "aicore-sdk-java"
     },
     {
-      "query": "Give me a Python snippet for GenAI Hub embeddings",
+      "query": "How do I use com.sap.ai.sdk:orchestration in my Spring Boot app?",
       "should_trigger": false,
-      "belongs_to": "aicore-sdk-python"
-    },
-    {
-      "query": "Create a gpt-4o-mini deployment and wait for it to be running",
-      "should_trigger": false,
-      "belongs_to": "aicore-lifecycle-management"
-    },
-    {
-      "query": "List and delete my AI Core deployments",
-      "should_trigger": false,
-      "belongs_to": "aicore-lifecycle-management"
-    },
-    {
-      "query": "What foundation models are available in my AI Core instance?",
-      "should_trigger": false,
-      "belongs_to": "genai-hub-foundation-models"
-    },
-    {
-      "query": "Which model name should I use for Claude on GenAI Hub?",
-      "should_trigger": false,
-      "belongs_to": "genai-hub-foundation-models"
-    },
-    {
-      "query": "I keep getting 401 Unauthorized calling AI Core — how do I fix my credentials?",
-      "should_trigger": false,
-      "belongs_to": "aicore-admin-resources"
-    },
-    {
-      "query": "How do I run aicore configure to set up my credentials?",
-      "should_trigger": false,
-      "belongs_to": "aicore-admin-resources"
-    },
-    {
-      "query": "Explain the orchestration service concepts and its grounding module (no code)",
-      "should_trigger": false,
-      "belongs_to": "genai-hub-orchestration"
-    },
-    {
-      "query": "Set up a tabular AI orchestration pipeline for my dataset",
-      "should_trigger": false,
-      "belongs_to": "genai-hub-tabular-orchestration"
+      "belongs_to": "aicore-sdk-java"
     }
   ]
 }

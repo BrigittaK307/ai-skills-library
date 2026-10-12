@@ -8,9 +8,7 @@ description: >
   WHEN: user asks for Java or Kotlin code that calls a GenAI Hub model, wants a Java
   starter project, asks how to use com.sap.ai.sdk in their app, or asks how to
   integrate AI Core into a Spring Boot or plain Java application.
-  DO NOT USE FOR: JavaScript/TypeScript code — use `aicore-sdk-js`; Python code —
-  use `aicore-sdk-python`; managing deployments — use `aicore-lifecycle-management`;
-  credential setup — use `aicore-admin-resources`.
+  DO NOT USE FOR: JavaScript/TypeScript code — use `aicore-sdk-js`.
 compatibility: Requires Java 17+ and Maven or Gradle. Context7 MCP is optional (see Sources & Fallback).
 ---
 
@@ -35,7 +33,7 @@ https://sap.github.io/ai-sdk/docs/java/ directly.
 
 ## Rules
 
-1. If no deployment exists, invoke `aicore-lifecycle-management` to list or create one before generating code.
+1. If no deployment exists, check the SAP AI Core console or contact your admin to list or create one before generating code.
 2. Always include credential guidance in generated code comments; link to [Connecting to AI Core](https://sap.github.io/ai-sdk/docs/java/connecting-to-ai-core) for setup details.
 3. Use `OrchestrationAiModel` constants (e.g. `OrchestrationAiModel.GPT_4O_MINI`) — never raw model name strings.
 4. Always use `OrchestrationClient` as the primary client for chat, streaming, embeddings, grounding, and filtering. `OpenAiClient` (`openai` artifact) is only for direct OpenAI proxy use cases — do not recommend it for general chat.
@@ -44,7 +42,7 @@ https://sap.github.io/ai-sdk/docs/java/ directly.
    - **Spring AI `ChatModel.stream()` (`OrchestrationChatModel` / `OpenAiChatModel`)**: this method is part of the Spring AI `ChatModel` interface and legitimately returns `Flux<ChatResponse>`. Composing the `Flux` directly (e.g. `.doOnNext(…).blockLast()`) is correct — do not replace it with `ResponseBodyEmitter`.
 6. Gather these details before generating code — ask only for what the user hasn't provided:
    - **Use case**: chat / streaming / multi-turn / embeddings / grounding / filtering?
-   - **Model**: offer to invoke `genai-hub-foundation-models` to list available ones
+   - **Model**: check the SAP AI Core console or the [SAP GenAI Hub documentation](https://help.sap.com/docs/sap-ai-core) for available models
    - **Build tool**: Maven or Gradle?
    - **Framework**: plain Java / Spring Boot?
 7. For SDK bugs or unexpected runtime behavior: acknowledge the issue, share only verified workarounds from the assets or reference docs, and direct the user to https://github.com/SAP/ai-sdk-java/issues. Do not speculate about SDK internals or diagnose bugs not covered by a source above.
@@ -137,12 +135,7 @@ See: https://sap.github.io/ai-sdk/docs/java/connecting-to-ai-core
 
 ## Handoffs
 
-- **No deployment yet?** → invoke `aicore-lifecycle-management`
-- **Credential/auth error?** → invoke `aicore-admin-resources`
-- **Need to find a model name?** → invoke `genai-hub-foundation-models`
 - **Want JS/TS code instead?** → invoke `aicore-sdk-js`
-- **Want Python code instead?** → invoke `aicore-sdk-python`
-- **Orchestration concepts without code?** → invoke `genai-hub-orchestration`
 - **SDK bug or unexpected behavior?** → https://github.com/SAP/ai-sdk-java/issues
 
 ---

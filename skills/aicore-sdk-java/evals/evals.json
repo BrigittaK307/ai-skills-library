@@ -165,10 +165,11 @@
     {
       "id": 16,
       "prompt": "Write the SAP orchestration chat code in Python for me.",
-      "expected_output": "Agent recognizes this is a Python request and hands off to aicore-sdk-python rather than generating Java.",
+      "expected_output": "Agent recognizes this is a Python request, does not generate Java code, and informs the user that no Python skill is available while pointing to the SAP AI SDK documentation.",
       "assertions": [
         "Agent does not generate Java code",
-        "Agent explicitly hands off to or names the aicore-sdk-python skill"
+        "Agent informs the user that Python is not covered by any skill in this repo",
+        "Agent points to https://sap.github.io/ai-sdk/ or similar for Python SDK guidance"
       ]
     },
     {
@@ -183,10 +184,10 @@
     {
       "id": 18,
       "prompt": "Generate a Java chat example with the SAP AI SDK but I don't have a deployment yet.",
-      "expected_output": "Agent notes a deployment is needed and offers to invoke aicore-lifecycle-management before generating code.",
+      "expected_output": "Agent notes a deployment is needed and directs the user to the SAP AI Core console or their admin, before explaining the correct OrchestrationClient code shape.",
       "assertions": [
         "Agent recognizes no deployment is available",
-        "Agent offers to invoke or names aicore-lifecycle-management",
+        "Agent directs the user to the SAP AI Core console or their admin rather than naming a non-existent skill",
         "Agent still explains the correct OrchestrationClient code shape to use once a deployment exists"
       ]
     },
