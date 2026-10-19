@@ -46,28 +46,3 @@ client.on("error", (err) => {
   console.error("Realtime error:", err);
   client.close();
 });
-
-// ─── Audio-in / audio-out variant (commented out) ────────────────────────────
-// For speech-to-speech, stream 16-bit signed LE mono PCM at 24 000 Hz.
-// Encode each chunk as base64 and send as input_audio_buffer.append messages.
-// Commit the buffer when the utterance is done, then call response.create.
-//
-// client.send({
-//   type: "session.update",
-//   session: {
-//     output_modalities: ["audio"],
-//     audio: {
-//       input:  { format: { type: "audio/pcm", rate: 24000 }, turn_detection: null },
-//       output: { voice: "alloy" },
-//     },
-//   },
-// });
-//
-// client.send({ type: "input_audio_buffer.append", audio: base64PcmChunk });
-// client.send({ type: "input_audio_buffer.commit" });
-// client.send({ type: "response.create" });
-//
-// client.on("response.output_audio.delta", (event) => {
-//   const pcmChunk = Buffer.from(event.delta ?? "", "base64");
-//   // write pcmChunk to your audio output stream
-// });
